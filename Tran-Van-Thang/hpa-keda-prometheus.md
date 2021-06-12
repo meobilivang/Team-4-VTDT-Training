@@ -21,13 +21,13 @@ Tóm tắt kiến thức quan trọng khi tìm hiểu HPA, KEDA, Prometheus
 - Cách retrive lấy metrics:
   - Mặc định sẽ lấy được các thông số cơ bản như ram,cpu. network,..
   - Muốn lấy các metrics đặc biệt theo từng ứng dụng khác nhau thì phải thông qua một `exporter` (Ví dụ như `mongodb exporter` giúp lấy tổng số document đã lưu trữ)
-  - Ngoài ra exporter còn hỗ trợ lấy metrics từ các services do developer viết ra với yêu cầu services đó có hỗ trợ `enpoint /metrics` với dạng dữ liệu chuẩn. (Cái này yêu cầu developer muốn scale service của mình theo metric mong muốn thì phải có thêm kỹ năng lập trình và hiểu về metrics)
+  - Ngoài ra exporter còn hỗ trợ lấy metrics từ các services do developer viết ra với yêu cầu services đó có hỗ trợ `enpoint /metrics` chứa dữ liệu mong muốn để trigger và được xuất ra dưới một định dạng chuẩn. (Cái này yêu cầu developer có thêm kỹ năng lập trình, biết sử dụng  thư viện `prometheus` ngôn ngữ đang sử dụng và hiểu về metrics)
 
-> Tóm lại, Prometheus giúp ta lấy được toàn bộ các metrics theo ý muốn từ đó có thể tích hợp với hpa để auto scaled với bất kì loại metrics nào.
+> Tóm lại, Prometheus giúp ta lấy được toàn bộ các metrics theo ý muốn từ đó có thể tích hợp với `hpa` để auto scaled với bất kì loại metrics nào.
 
 # KEDA
 
-- KEDA là một `ightweight component` được sử dụng cùng với k8s giúp mở rộng tính năng của k8s mà không tạo ra xung đột.
+- KEDA là một `lightweight component` được sử dụng cùng với k8s giúp mở rộng tính năng của k8s mà không tạo ra xung đột.
 
 - KEDA giúp auto scaled app dựa vào events (nó như là một phiên bản nâng cấp của hpa). Nó có thể đưa số pod của một depployment về 0.
 
@@ -42,4 +42,12 @@ Tóm tắt kiến thức quan trọng khi tìm hiểu HPA, KEDA, Prometheus
 - Web server bạn phải hỗ trợ endpoint /metrics
 - Exporter lấy metrics từ webserver của bạn
 - Prometheus lấy metrics từ exporter
-- KEDA sử dụng HTTP Server của prometheus để query lấy metrics để ra quyết định scaled thông qua việc định nghĩa `ScaledObject`
+- KEDA sử dụng HTTP Server của prometheus để query lấy metrics rồi ra quyết định scaled thông qua việc định nghĩa `ScaledObject`
+
+
+
+# Câu hỏi càn giải đáp
+- Có vẻ cần rất nhiều exporter?
+- Tự định nghĩa enport /metrics thì có tạo ra tính phức tạp không ?
+- KEDA hỗ trợ events trigger nó gồm những events gì? Tại sao không sự dụng thuần Prometheus?
+- Tại sao ObjectScaled nó giúp tạo ra HPA?
