@@ -16,7 +16,7 @@ HPA được triển khai dưới dạng Kubernetes API resource và controller.
 
 ![alt](./img/horizontal-pod-autoscaler.svg)
 
-- HPA được triển khai theo chu kỳ lặp
+- HPA được triển khai theo chu kỳ lặp, mặc định 15s
 - Trong bài này để kích hoạt HPA dựa trên các custom matrics, external matrics sẽ được lấy dưới dạng objects để scale target thông qua HPA.
 
 
