@@ -1,19 +1,30 @@
 ## Table Of Content
 
+### [HORIZONTAL POD SCALER](#HORIZONTAL-POD-SCALER)
+
+### [KEDA - `Kubernetes-based Event-driven Autoscaling`](#KEDA---`Kubernetes-based-Event-driven-Autoscaling`)
+
+### [PROMETHEUS](#PROMETHEUS)
+
+### [Challeneges to solve](#Challeneges-to-solve)
+
 ## HORIZONTAL POD SCALER
 
 ### Definition:
+
 - Automatically scales **number of Pods** in: `replication controller`, `deployment`, `replica set`, or `stateful set`.
 - Based metrics: `CPU utilization, or `custom metrics`
 
 - **Precaution**: applies only to `scalable objects` (E.g: `DaemonSets` cant be scaled)
 
 ### Why HPA?
+
 - Economical solution
 - Enahance H/A & stability of system. Espeacially in the place where traffic subject to strong fluctations.
 - **Automation**: reduce the workload for human-operator. 
 
 ### Mechanism:
+
 **Horizontal Pod Autoscaler**: implemeneted as a part of `K8S`: `API Resource` & `Controller`. 
 		- `Resource`: determines behavior of controller
 		- `controller`: periodically adjusts number of replicas in replication controller/deployment --> match `observed metrics` (e.g: avg `CPU utilisation`, `avg mem utilisation`, or other metrics)
@@ -423,6 +434,7 @@ Identifiction for `time serirees`:
 - Configuration Management System: `Ansible`, `Saltstack`,...
 
 ### Use Case
+
 `collect numeric metrics from a service that is running 24/7 and does expose the metrics on an HTTP(S) endpoint`
 - Suitable for monitoring `Pods` running on `Kubernetes` - which requires stability & high availability
 
@@ -430,3 +442,8 @@ Identifiction for `time serirees`:
 ### Integration with `Kubernetes`:
 Optimize the **automation** during configuration with [Prometheus Operator](https://github.com/prometheus-operator/prometheus-operator).
 
+
+## Challenge to solve
+
+- Choosing a `Deployment` solution for `Prometheus`?
+- Design a integration architecture for 3 modules.
