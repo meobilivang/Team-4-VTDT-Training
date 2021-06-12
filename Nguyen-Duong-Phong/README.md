@@ -2,6 +2,9 @@
 
 ### [HORIZONTAL POD SCALER](#HORIZONTAL-POD-SCALER)
 
+#### - [Resource Metrics Pipeline](#Resource-Metrics-Pipeline)
+
+
 ### [KEDA - `Kubernetes-based Event-driven Autoscaling`](#KEDA---`Kubernetes-based-Event-driven-Autoscaling`)
 
 ### [PROMETHEUS](#PROMETHEUS)
@@ -13,8 +16,7 @@
 ### Definition:
 
 - Automatically scales **number of Pods** in: `replication controller`, `deployment`, `replica set`, or `stateful set`.
-- Based metrics: `CPU utilization, or `custom metrics`
-
+- Based metrics: `CPU utilization`, or `custom metrics`
 - **Precaution**: applies only to `scalable objects` (E.g: `DaemonSets` cant be scaled)
 
 ### Why HPA?
@@ -31,66 +33,6 @@
 
 		- Implemented as a `control loop`, period controlled by controller's manager  (`--horizontal-pod-autoscaler-sync-period` default 15 secs)
 
-**API Object**: an API resource in `K8S` built-in autoscaling group
-	- Support ONLY `CPU autoscaling`at current stable release (`autoscaling/v1`)
-	- Support memeory & custom metrics (beta - `autoscaling/v2`)
-
-**How it works**:
-	- Each period, `Controller manager` queries resource utilization against pre-specified metrics (in each `HorizontalPodAutoScaler Definition1`)
-	- Controller gets metrics from:
-		- **Resource metrics API** (per pod-resource metrics):
-			- Controller fetches metrics from resource metrics API for each targeted Pod
-			- Default: use `utilization value` = `utilization val` --> % of resource request.
-			- Can set to use `raw value`i
-			- `raw` / `utilization` value collected ---> calculates a `ratio` -----> Scale number of `desired replicas`.
-
-		- **Custom metrics API** (other metrics):
-			- Per-pod custom metrics: get `raw values`.
-	- As `targetAverageUtilization` specified in advance, `currentMetricValue` = avg / declared metric across all targeting Pods of `HPA`
-
-**Where Metrics Extracted**:
-	- `Aggregated API`: `mettrics.k8s.io`, `custom.metrics.k8s.io`, `external.metrics.k8s,id`.
-		- `metrics.k8s.io`: 
-			- provided by `metrics-server`
-
-	- Heapster
-
-**Alogrithm Explained**:
-- **Simplified explaination**: operates on ratio between `desired metric` & `current metric value`.
-
-- Equation: use with Pods which are not set aside/discarded
-```bash
-desiredReplicas = ceil[currentReplicas * ( currentMetricValue / desiredMetricValue )]
-```
-	- `ceil`: rounding. set via `--horizontal-pod-autoscaler-toleranc` (default: 0.1)
-- When working with multiple metrics:
-	- equation is used on each metric --> **LARGEST** of desired replicas is selected
-	- **scaling skipped**: some metrics cant be calculated into a replica number (missing?) + a scale down is suggested by metrics that available
-	- **scaling continues**: if `desiredReplicas` > current value
-
-**Conditions**: following conditions are taken into consideration before checking `tolerance` & final values is decided:
-	- `Pod Readiness`i
-		- A Pod will be excluded in cases:
-			- Deletion Timestamp set (on Termination)
-			- Missing Metrics
-			- Has not been ready (e.g: on initializing process)
-			- Most recent metrics point was before Pod became ready
-
-	- `Missing Metrics`
-	- **Note**: original value for avg utilization reported back via `HPA status` (without considering `not-yet-ready-pods`/`missing metrics`)
-
-**Dealing with missing metrics**: to reduce the workload of potential further scale
-- Avg is recalculated `conservatively: assuming the Pod usage as below in specific cases`
-	- `scale up`: 0% of desired value
-	- `scale down`: 100% of desired value
-
-- With `not-yet-ready-pod`: assume it consuming 0% of desired metric (prevents unnecessary scale up)
-
-**Autoscaling during roolling update**
-- HPA:
-	- bounds to `Deployment` object --> sets size for deployment object ---> Deplyment sets size for replica sets
-	- Does not work with `rolling update` directly with `replication controller`
-
 ## Workflow
 
 Using the built-in `Metrics Server.
@@ -105,18 +47,18 @@ Using the built-in `Metrics Server.
 <img src="./imgs/metrics-server-diagram.png">
 
 **Steps**:
-	1. Collect metrics: (On `Worker Node`)  Metrics are collected from Pod --> CA Advisor -----> `Kubelete`
+1. Collect metrics: (On `Worker Node`)  Metrics are collected from Pod --> CA Advisor -----> `Kubelete`
 
-	2. Expose metric: At `CA Advisor`, metrics are exposed to be extracted by `Kubelete`
+2. Expose metric: At `CA Advisor`, metrics are exposed to be extracted by `Kubelete`
 	
-	3. Collect & Aggregate metrics: Metrics Server gathers the metrics at `Master Node`
+3. Collect & Aggregate metrics: Metrics Server gathers the metrics at `Master Node`
 	
-	4. Expose Metrics: Metrics are then exposed for extraction to `API Server` by `Metrics Server`.
+4. Expose Metrics: Metrics are then exposed for extraction to `API Server` by `Metrics Server`.
 
 #### How `Horizontal Pod Autoscaler` works?
 
 
-**Diagram**:
+**Diagram**
 
 <img src="./imgs/hpa-workflow.png" >
 
@@ -144,29 +86,12 @@ $ kubectl get hpa
 
 ### Support `resource metrics`
 
-**Pod Metrics**: 
-- Should specify resource requests `cpu` + `memory` when definining Pod ---> used by `HPA controller`for scaling `up` + `down`
+### Support multiple metrics'
 
-**Container Resource Metrics**:
-- HPA can track resources usage of individual containers across `Pods`
-- **Pros**: more micro approach.
-- Sample use case: `a web app + logging sidecar`
-	- Track resource utilization of `web app` while ignoring `logging` service
-
-```yaml
-type: ContainerResource
-containerResource:
-  name: cpu
-  container: application
-  target:
-    type: Utilization
-    averageUtilization: 60
-```
-
-### Support multiple metrics
 - can use `autoscaling/v2beta` --> multple mtrics for scaling
 
 ### Support custom metrics
+
 - `K8S` retrieve values from new customs metrics API
 - Add to system using `autoscaling/v2beta2`
 
@@ -186,20 +111,6 @@ containerResource:
 
 
 ### Highly configurable Scaling behavior:
-
-`scaleUp` & `scaleDown` policies can be configured under `behavior` field.
-
-
-- `scaleUp` / `scaleDown` behavior can be `Disabled`.
-
-#### Scaling Policies
-- >= 1 policies can be declared
-- Some parameters/behaviours can be configured: 
-	- `max num of replicas to be scaled in a specific period of time`
-
-### Scaling window
-- Puts restrictions to deal with scenerios when scaling metrics not stable ---> keep scaling too much 
-	- Example: put condition to check only `highest value` in the last x minutes
 
 ### Resource Metrics Pipeline
 
@@ -244,8 +155,9 @@ containerResource:
 
 ## KEDA - `Kubernetes-based Event-driven Autoscaling`
 
-### What is `KEDA`?:
-- a `Kubernetes-based Event-driven Autoscaling` --> scale event based on on-processing number of events
+### What is `KEDA`?
+
+- A `Kubernetes-based Event-driven Autoscaling` --> scale event based on on-processing number of events
 - Offical `CNCF` Project
 - Built on top of `Kubernetes HPA`, extending its functionality. Acts an comprehensive alternative for built-in `Metrics server` (`Prometheus` requires adapter)
 
@@ -258,7 +170,7 @@ containerResource:
 
 
 ### Installation:
-Various ways to deploy: refer to this (link)[https://keda.sh/docs/2.3/deploy/]
+Various ways to deploy: refer to this [link](https://keda.sh/docs/2.3/deploy/)
 
 - `Helm`
 - `Operator Hub`
@@ -287,15 +199,16 @@ Various ways to deploy: refer to this (link)[https://keda.sh/docs/2.3/deploy/]
 
 
 **Custom Resources in `KEDA`**: brings up at install
-- `ScaledObjects`: mapping between `event source` (e.g: `RabbitMQ`, `Prome`) & `K8S Resources` (e.g: Deployment, StatefulSet, CR,...)
 - `ScaledJobs`: mapping between event source & `K8S` Job
 - `TriggerAuthentication`/`ClusterTriggerAuthentication`: contains auth config / secrets to monitor event source. Likely to be refered by `ScaledObjects` and `ScaledJobs` 
 
 ### Architecture & Components:
 
 **Deployment Architecture**
+
 - Runs on `Kubernetes Cluster`
-<img src="./imgs/keda-arc.png">
+
+<img src="./imgs/keda-arch.png">
 
 **Components**
 - **Scaler**: 
@@ -378,8 +291,10 @@ Includes multiple components. Some of which are optional
 - **Push Gateway**: allow ephemeral and batch jobs to expose their metrics to Prometheus.
 	- **Workflow**: due to the fact that these jobs may not last enough for scraping.
 				
-				Jobs |------------------> Pushgateway |------------------> `Prometheus`
-						  push metrics  				      exposes						
+```
+Jobs |------------------> Pushgateway |------------------> `Prometheus`
+		 push metrics  				        exposes						
+```
 
 - **Exporters**: 
 	- **Goal**: 
