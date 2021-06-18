@@ -213,7 +213,7 @@ spec:
 - địa chỉ của prometheus server là `http://prometheus-prometheus-oper-prometheus.default.svc.cluster.local:9090` trong đó host là tên service của prometheus.
 
 ### C. Kết quả
-
-Sau khi triển khai tất cả các thành phần trên ta có kết quả như sau:
+- Tạo số lượng kết nối ảo đến mongodb bằng cách mở nhiều terminal( mỗi terminal tương ứng với một connections) và gõ: `telnet localhost 27017` (trong đó port 27017 đã được mở bởi cơ chế `port-forward` đối với pod `mongodb`)
+- Sau khi triển khai tất cả các thành phần trên ta có kết quả như sau:
 
 <img src="./img/keda-mongo-alpine.PNG">
