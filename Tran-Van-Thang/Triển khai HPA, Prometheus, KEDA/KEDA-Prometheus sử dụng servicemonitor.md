@@ -2,8 +2,11 @@
 
 > Đọc bài `KEDA-Prometheus sử dụng exporter` trước khi làm bài này.
 > Bài này thực hiện tương tự như bài`KEDA-Prometheus sử dụng exporter` nhưng thay vì phải sử dụng exporter có sẵn thì ta sẽ tự viết service monitor để lấy metrics từ web server chúng ta tự code.
-
-- Triển khai một web-server đã tích hợp sẵn enpoint /metrics ở trong code
+- Triển khai một redis server sử dụng helm đã có repo `stable`
+ ```console
+ helm install redis-server --set cluster.enabled=false --set usePassword=false stable/redis
+ ```
+- Triển khai một web-server đã tích hợp sẵn enpoint /metrics ở trong code (web server này sử dụng ` Prometheus Go client library` và sử dụng redis server ở trên)
 
 ```console
 apiVersion: apps/v1
