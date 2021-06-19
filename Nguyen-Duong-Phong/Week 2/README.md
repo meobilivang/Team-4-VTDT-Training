@@ -131,7 +131,7 @@ $ kubectl run -i --tty load-generator --rm --image=busybox --restart=Never -- /b
 
 - Automatically scales up number of `Pods` when `CPU utilization` reached defined policy:
 
-<img src="./imgs/demo-1-scale-up.png">
+<img src="./imgs/demo-1-scale-up-pods.png">
 
 - Automatically scales down number of `Pods` when workload down:
 
