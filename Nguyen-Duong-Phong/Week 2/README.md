@@ -341,8 +341,8 @@ $ kubectl run -i --tty load-generator --rm --image=busybox --restart=Never -- /b
     ```bash
     $  kubectl port-forward --address=0.0.0.0 svc/<name-of-mysql-exporter-service> 9104:9104
     ```
-        - Check via browser: `http://192.168.80.165/metrics`:
-        <img src="./imgs/demo-3-install-exporter-connected-to-mysql.png">
+       - Check via browser: `http://192.168.80.165/metrics`:
+       <img src="./imgs/demo-3-install-exporter-connected-to-mysql.png">
 
     - `Prometheus` discovered `Target`:
     <img src="./imgs/demo-3-install-exporter-connected-to-prome.png">
