@@ -440,13 +440,13 @@ spec:
     metadata:
       serverAddress: http://prometheus-kube-prometheus-prometheus.default.svc.cluster.local:9090
       metricName: cpu_usage_wordpress
-      threshold: "0.001"
+      threshold: "2"
       query: ceil(avg(sum(node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate{container=~"wordpress"})) by (container) * 10)        #CPU Usage of WordpPress Pod(s)
   - type: prometheus
     metadata:   
       serverAddress: http://prometheus-kube-prometheus-prometheus.default.svc.cluster.local:9090
       metricName: memory_usage_wordpress
-      threshold: "524288000"					  #500MiB
+      threshold: "150"					  #150MiB
       query: ceil(avg(sum(container_memory_working_set_bytes{image!="", container=~"wordpress"})) by (container) / 1048576)      #Memory Usage of WordPress Pod(s))
 ```
 
