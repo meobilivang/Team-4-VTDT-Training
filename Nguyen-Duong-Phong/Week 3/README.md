@@ -2,7 +2,9 @@
 
 ## Before starting
 
-Shoutouts to anh @tranthang2404 & anh @ducluongtrann for your ideas in using `Alpine` image as a dummy Deploy, implementing `RabbitMQ` alongside with a `Webserver`
+Shoutouts to anh @tranthang2404 & anh @ducluongtrann for your ideas in: 
+- using `Alpine` image as a dummy Deployment.
+- implementing `RabbitMQ` alongside with a `Webserver`.
 
 ## Lab #1:  *Scaling with multiple metrics from `WordPress` & `MySQL` applications*
 
