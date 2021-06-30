@@ -4,7 +4,7 @@
 
 ---
 
-<h1 style="text-align: center"> Project Proposal </h1>
+<h1 align="center"> Project Proposal </h1>
 
 ## :bulb: Topic: *`Auto-scaling application using custom metrics on Kubernetes`*
 
@@ -18,7 +18,7 @@
 - Luong D. Tran 
 - Thang V. Tran
 
-<h2 style="text-align: center">
+<h2 align="center">
  <g-emoji class="g-emoji" alias="date" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f4c5.png">📅</g-emoji>
  Expected Schedule
 </h2>
@@ -51,7 +51,7 @@
 - Finish & elaborate documentations
 - Build Final Report & `Powerpoint` slides
 
-<h2 style="text-align: center">
+<h2 align="center">
  <g-emoji class="g-emoji" alias="fire" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f525.png">🔥</g-emoji>
  General Objectives 
 </h2>
@@ -62,7 +62,7 @@
 
 3. Implement project management methodology & standardize workflow. 
 
-<h2 style="text-align: center"> 
+<h2 align="center"> 
     <g-emoji class="g-emoji" alias="hammer_and_wrench" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f6e0.png">🛠️</g-emoji> 
     Covered Concepts 
 </h2>
@@ -159,20 +159,149 @@ As directed by our mentor, the hands-on of this project should contain below com
 
 #### **Additional**
 
-**RabbitMQ**
+- **RabbitMQ**
 
-**MySQL** 
+- **MySQL** 
 
-**MongoDB**
+- **MongoDB**
 
-### :bookmark_tabs: Project Management
+```
+With additional topics, we would recommend to resolve following questions:
 
-#### Platforms/Tools
+1. What is it? What are prominent features?
+2. When to use it? Which use cases?
+3. How to use it? How to install/configure?s
+```
 
-### GitHub Repository
+<h2 align="center"> 
+    <g-emoji class="g-emoji" alias="bookmark_tabs" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f4d1.png">📑</g-emoji>
+    Project Management
+</h2>
+
+#### Used Platforms/Tools
+
+:telephone: **Communication platform**: **`Telegram`**
+
+:page_with_curl: **Version control system** : **`GitHub`**
+
+:open_file_folder: **Project Management Tool**: **`Trello`**
+
+<img src="./imgs/trello-board.png" width="80%">
+
+### How we manage project?
+
+**Management Key Idea**
+
+```bash
+As each person has his/her own perceptions on each topics, we strongly encourage members to work on the same number of topics and share his/her approaches with others through weekly discussions.
+```
+
+**How do we work on planning?**
+
+Details of things to work on a new week would be discussed on weekend of previous week.
+
+**How use `Trello`?**
+
+We will get things get updated on `Trello` before the start of a new week. Each task/issue is represented under a card on `Trello` board. 
+
+Members use this tool to track progress & review the description/guidances for each task/other stand
+
+**How do we assign tasks to members?**
+
+All members receive the **same number** of topics to work on. Please note that all topics are *similar*.  
+
+**Why we dont assign specific topics to each individual?**
+
+We expect that all mentees should reach some level of understanding on core topics (**HPA, KEDA, Prometheus**). Everyone should execute research/lab & write reports on all topics. 
 
 
-#### Contributors:
+#### Weekly Routines
+
+- **Report Deadline**: `Friday/Saturday`
+- **Scheduled Meetings**: `Saturday/Sunday`
+- **Urgent Meetings**: `Any weekday`
+
+<h2 align="center"> 
+    <img class="emoji" title=":octocat:" alt=":octocat:" src="https://github.githubassets.com/images/icons/emoji/octocat.png" height="40" width="40" align="absmiddle">
+    GitHub Repository
+</h2>
+
+### :deciduous_tree: Directory Structuring
+
+*This Reposiory stores reports from our team members. If you want to have a closer look at our works, please visit each reports for further details*
+
+#### **Structural Overview of Repository**
+
+3 main folders, from `Week 1` --> `Week 3`. On each week, each mentee has personal folder to submit report.
+
+**Reports Content Summary**:
+
+- **Week 1**: Summary notes on topics that each individual collects/reads on Week 1. 
+
+- **Week 2**: *Documentation on* 
+    - Installation of `HPA`, `KEDA`, `Prometheus`.
+    - Integrations of:
+        - Plain `HPA` with `Kubernetes`
+        - All 3 listed modules with `Kubernetes` 
+
+- **Week 3**: Reports on conducting simulation of real-world use cases. 
+    - Extracting metrics from various sources (**e.g**: from running node & `RabbitMQ`)
+    - Multiple metrics based scaling
+
+#### **Structure Diagram**
+
+```bash
+│   LICENSE
+│   README.md
+│
+├───imgs
+│
+├───Week 1
+│   ├───Julian-P-Nguyen
+│   │   │   README.md
+│   │   │
+│   │   └───imgs
+│   │      
+│   │
+│   ├───Tran-Duc-Luong
+│   │   │   Report-KEDA-Kubernetes.md
+│   │   └───img
+│   └───Tran-Van-Thang
+│           hpa-keda-prometheus.md
+│
+├───Week 2
+│   ├───Julian-P-Nguyen
+│   │   │   README.md
+│   │   │
+│   │   └───imgs
+│   │
+│   ├───Tran-Duc-Luong
+│   │   │   Autoscale.md
+│   │   │
+│   │   └───image
+│   │
+│   └───Tran-Van-Thang
+│       │   HPA-sử dụng CPU metrics.md
+│       │   KEDA-Prometheus sử dụng exporter.md
+│       │   KEDA-Prometheus sử dụng servicemonitor.md
+│       │
+│       └───img
+│
+└───Week 3
+    ├───Julian-P-Nguyen
+    │   │   README.md
+    │   │
+    │   └───imgs
+    │
+    ├───Tran-Duc-Luong
+    └───Tran-Van-Thang
+        │   webapi+rabbitmq.md
+        │
+        └───img
+
+```
+
+### :construction_worker: Contributors
 
 - [**Julian P. Nguyen**](https://github.com/meobilivang)
 - [**Luong D. Tran**](https://github.com/ducluongtrann)
