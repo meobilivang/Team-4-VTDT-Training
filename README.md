@@ -196,33 +196,33 @@ With additional topics, we would recommend to resolve following questions:
 
 <img src="./imgs/trello-board.png" width="80%">
 
-### How we manage project?
+### :interrobang: How we manage project?
 
-**Management Key Idea**
+**:exclamation: Management Key Idea**
 
 ```bash
 As each person has his/her own perceptions on each topics, we strongly encourage members to work on the same number of topics and share his/her approaches with others through weekly discussions.
 ```
 
-**How do we work on planning?**
+:question: **How do we work on planning?**
 
 Details of things to work on a new week would be discussed on weekend of previous week.
 
-**How use `Trello`?**
+:question: **How use `Trello`?**
 
 We will get things get updated on `Trello` before the start of a new week. Each task/issue is represented under a card on `Trello` board. 
 
 Members use `Trello` to track progress & review the description/guidances for each task/other pre-defined requirements.
 
-**How do we assign tasks to members?**
+:question: **How do we assign tasks to members?**
 
 All members receive the **same number** of topics to work on. Please note that all topics are *similar*.  
 
-**Why we dont assign specific topics to each individual?**
+:question: **Why we dont assign specific topics to each individual?**
 
 We expect that all mentees should reach some level of understanding on core topics (**HPA, KEDA, Prometheus**). Everyone should execute research/lab & write reports on all topics. 
 
-#### Weekly Routines
+#### :briefcase: Weekly Routines
 
 - **Report Deadline**: `Friday/Saturday`
 - **Scheduled Meetings**: `Saturday/Sunday`
@@ -308,7 +308,7 @@ We expect that all mentees should reach some level of understanding on core topi
 
 ```
 
-**Closer View on Paths**
+**:card_index_dividers: Closer View on Paths**
 
 **`/Week 1`**: Research
 
