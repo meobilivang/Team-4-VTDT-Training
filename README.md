@@ -36,7 +36,7 @@
 
 **Date:** *June 13th, 2021 - June 20th, 2021*
 
-**Goal**: Bring acquired knowledge into actions. Able to configure & apply involved components at elementary level
+**Goal**: Bring acquired knowledge into action. Able to configure & apply involved components at elementary level
 
 - Basic install of components
 - Perform simple demos to understand the workflow & configurations of components.
@@ -50,7 +50,7 @@
 - Brainstorm which real-world problem to solve
 - Simulate the specific use cases & perform labs.
 
-**Week 4**: *Final Report & Presentation Slides*
+**Week 4**: *Final Report & Presentation*
 
 **Date:** *June 28th, 2021 - July 1st, 2021*
 
@@ -95,7 +95,7 @@ The project revolves around **`Kubernetes`** - *the Container Orchestration Appl
 - `Networking`
 - `Containerization` *(better to know some `Docker`)*
 
-**Progamming**: *a bit of coding involves while performing labs. Moreover, we may need to be able to debug/understand (some parts) sourcecode of the integrated frameworks/libraries/add-ons*
+**Progamming**: *a bit of coding involves while performing labs. Moreover, we may need to be able to debug/understand (some parts of the) sourcecode of integrated frameworks/libraries/add-ons*
 
 
 ### Deployment Required Components
@@ -196,7 +196,7 @@ With additional topics, we would recommend to resolve following questions:
 
 <img src="./imgs/trello-board.png" width="80%">
 
-### :interrobang: How we manage project?
+### :interrobang: How do we manage project?
 
 **:exclamation: Management Key Idea**
 
@@ -208,7 +208,7 @@ As each person has his/her own perceptions on each topics, we strongly encourage
 
 Details of things to work on a new week would be discussed on weekend of previous week.
 
-:question: **How use `Trello`?**
+:question: **How to `Trello`?**
 
 We will get things get updated on `Trello` before the start of a new week. Each task/issue is represented under a card on `Trello` board. 
 
@@ -218,7 +218,7 @@ Members use `Trello` to track progress & review the description/guidances for ea
 
 All members receive the **same number** of topics to work on. Please note that all topics are *similar*.  
 
-:question: **Why we dont assign specific topics to each individual?**
+:question: **Why we don't assign specific topics to each individual?**
 
 We expect that all mentees should reach some level of understanding on core topics (**HPA, KEDA, Prometheus**). Everyone should execute research/lab & write reports on all topics. 
 
