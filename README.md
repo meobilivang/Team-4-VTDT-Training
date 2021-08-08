@@ -1,14 +1,15 @@
-# `Viettel Digital Talent` :two::zero::two::one: 
+<h1 align="center"> :tada: Viettel Digital Talent 2021 :tada: </h1>
+<br/>
+<h2 align="center"> :fire: Phase 1B: <i>Team Project</i> </h2>
+<br/>
+<h3 align="center"><b>Project Proposal</b></h3>
 
-### Phase 1B: *Team Project*
+<br/>
+
+:bulb: Topic: *`Auto-scaling application using custom metrics on Kubernetes`*
 
 ---
-
-<h1 align="center"> Project Proposal </h1>
-
-## :bulb: Topic: *`Auto-scaling application using custom metrics on Kubernetes`*
-
-### Team :four: - *with following members*:
+### Team :four: - *with members*:
 
 **Mentor**: Pham Chien
 
